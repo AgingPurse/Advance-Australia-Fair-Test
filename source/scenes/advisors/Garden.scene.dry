@@ -1,0 +1,32 @@
+title: Jock Garden
+is-pinned-card: true
+tags: advisor, left
+card-image: img/portraits/LeviPaul.jpg
+view-if: levi_advisor = 1
+new-page: true 
+
+= Jock Garden
+
+Garden is one of our most leftwing MP's, and formerly founded the Australian Communist Party, he has a close relationship with Jack Lang.
+
+- @building_the_left
+- @Lang_cooperation
+- @root: Return to main
+
+@building_the_left
+title: Building the Left
+subtitle: Push the ALP to the left.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_strength += 10; left_dissent -= 8; reformist_dissent += 3
+
+We have increased the strength of the left faction with the ALP. This raised concern among the moderate reformists in the party.
+
+@Lang_cooperation
+title: Cooperation with Lang
+subtitle: Any cooperation between the parties requires compromise from the DLP as well as the ALP.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_strength += 5; DLP_relation += 6*(1-dissent); reformist_dissent += 3; Lang_coalition += 1 if DLP_cooperation_seen <= 1; DLP_cooperation_seen += 1
+
+Garden attempts to reach out to his former colleagues to dissuade the DLP from their current Independent path. Some concessions are extracted.
