@@ -1,0 +1,34 @@
+title: Joseph Lyons
+is-pinned-card: true
+tags: advisor, reformist
+card-image: img/portraits/AufhäuserSiegfried.jpg
+view-if: aufhauser_advisor = 1
+new-page: true 
+
+= Siegfried Aufhäuser
+
+Lyons is more of a social-liberal than Socialist, and is unpopular among the party, however lyons is one of our best economists, and has the complete loyalty of the reformist faction of the ALP.
+
+- @white_collar
+- @Implement_Premier_plan
+- @root: Return to main
+
+@white_collar
+title: Organizing white-collar workers
+subtitle: Improve our standing among the new middle class.
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] 
+on-arrival: advisor_action_timer = 6; new_middle_spd += 6*(1-dissent);
+
+We have increased our organizing among white-collar workers.
+
+
+
+@moderate_economic_plan
+title: Support the Premier plan
+subtitle: Lyons can implement fiscal austerity, and attempt to control the economy.
+choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if moderate_economic_plan = 0 : We have already adopted the Premier plan. ?] [? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?]
+on-arrival: advisor_action_timer = 6
+go-to: crisis_program.support_moderate
+
